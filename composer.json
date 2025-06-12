@@ -1,0 +1,12 @@
+{
+    "name": "emiliano/backend",
+    "authors": [
+        {
+            "name": "Emiliano",
+            "email": "emilianocarrizo77@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
