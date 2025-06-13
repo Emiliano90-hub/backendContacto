@@ -30,8 +30,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Cargar variables de entorno
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+// $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+// $dotenv->load();
 
 $data = json_decode(file_get_contents("php://input"), true);
 
@@ -51,13 +51,13 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = $_ENV['GMAIL_USER'];
-    $mail->Password = $_ENV['GMAIL_PASS'];
+    $mail->Username = getenv('GMAIL_USER');
+    $mail->Password = getenv('GMAIL_PASS');
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    $mail->setFrom($_ENV['GMAIL_USER'], 'Formulario Web');
-    $mail->addAddress($_ENV['GMAIL_USER']);
+    $mail->setFrom(getenv('GMAIL_USER'), 'Formulario Web');
+    $mail->addAddress(getenv('GMAIL_USER'));
     $mail->Subject = 'Nuevo mensaje desde tu formulario';
     $mail->Body = "Nombre: $nombre\nEmail: $email\nMensaje:\n$mensaje";
 
